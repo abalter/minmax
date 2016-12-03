@@ -1,0 +1,122 @@
+medsize: 10000
+longsize: 1000000
+ncols: 10
+writing medsample.tsv
+
+real	0m0.278s
+user	0m0.214s
+sys	0m0.032s
+writing longsample.tsv
+
+real	0m4.387s
+user	0m4.204s
+sys	0m0.140s
+MEDIUM SAMPLES
+-------------
+timing minmax.awk
+time for col in $(seq 1 $ncols); do echo $col; awk -f minmax.awk $col medsample.tsv; done
+1
+-1000 999
+2
+-1000 999
+3
+-1000 999
+4
+-1000 999
+5
+-1000 999
+6
+-1000 999
+7
+-1000 999
+8
+-1000 999
+9
+-999 999
+10
+-1000 999
+
+real	0m0.279s
+user	0m0.253s
+sys	0m0.018s
+-------------
+timing minmax.py
+time for col in $(seq 1 $ncols); do echo $col; python minmax.py -c $col -f medsample.tsv; done
+1
+-1000	999
+2
+-1000	999
+3
+-1000	999
+4
+-1000	999
+5
+-1000	999
+6
+-1000	999
+7
+-1000	999
+8
+-1000	999
+9
+-999	999
+10
+-1000	999
+
+real	0m0.584s
+user	0m0.400s
+sys	0m0.080s
+LONG SAMPLES
+-------------
+timing minmax.awk
+time for col in $(seq 1 $ncols); do echo $col; awk -f minmax.awk $col longsample.tsv; done
+1
+-1000 999
+2
+-1000 999
+3
+-1000 999
+4
+-1000 999
+5
+-1000 999
+6
+-1000 999
+7
+-1000 999
+8
+-1000 999
+9
+-1000 999
+10
+-1000 999
+
+real	0m25.249s
+user	0m25.027s
+sys	0m0.193s
+timing minmax.py
+time for col in $(seq 1 $ncols); do echo $col; python minmax.py -c $col -f longsample.tsv; done
+1
+-1000	999
+2
+-1000	999
+3
+-1000	999
+4
+-1000	999
+5
+-1000	999
+6
+-1000	999
+7
+-1000	999
+8
+-1000	999
+9
+-1000	999
+10
+-1000	999
+
+real	0m11.576s
+user	0m11.213s
+sys	0m0.239s
